@@ -22,7 +22,8 @@ public class Expense {
     @Column(name = "expense_name")
     private String name;
 
-
+    @Column(name = "expense_year")
+    private int year ;
     @Column(name = "expense_amount")
     private double amount;
 

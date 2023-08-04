@@ -2,10 +2,10 @@ package org.fasttrackit.budget.budgetapp.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.fasttrackit.budget.budgetapp.exception.ResourceNotFoundException;
-import org.fasttrackit.budget.budgetapp.model.Expense;
+import org.fasttrackit.budget.budgetapp.controller.exception.ResourceNotFoundException;
+import org.fasttrackit.budget.budgetapp.model.Bill;
 import org.fasttrackit.budget.budgetapp.model.Income;
-import org.fasttrackit.budget.budgetapp.repository.IncomeRepository;
+import org.fasttrackit.budget.budgetapp.service.repository.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +51,24 @@ public class IncomeService {
         incomeRepository.deleteById(id);
     }
 
-    public List<Income> getAllIncomesFilterable(String name, String Category, double minAmount, double maxAmount, String dueDate) {
-        return null;
+
+    public double getSumOfIncomeForMonth(String month) {
+        List<Income> allIncome = incomeRepository.findByMonth(month);
+
+        double sum = allIncome.stream()
+                .mapToDouble(Income::getAmount)
+                .sum();
+
+        return sum;
+    }
+
+    public double getSumOfIncomeForYear(int year) {
+        List<Income> allBillsForYear = incomeRepository.findByYear(year);
+
+        double sum = allBillsForYear.stream()
+                .mapToDouble(Income::getAmount)
+                .sum();
+
+        return sum;
     }
 }

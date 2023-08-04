@@ -22,10 +22,13 @@ public class Income {
     @Column(name = "income_month")
     private String month;
 
+    @Column(name = "income_year")
+    private int year;
+
     @Column
     private String source;
 
-    @Column (name = "income_amount")
+    @Column(name = "income_amount")
     private double amount;
 
     @Column

@@ -1,11 +1,10 @@
 package org.fasttrackit.budget.budgetapp.controller;
 
-import org.fasttrackit.budget.budgetapp.exception.BadRequestException;
-import org.fasttrackit.budget.budgetapp.exception.ResourceNotFoundException;
+import org.fasttrackit.budget.budgetapp.controller.exception.BadRequestException;
+import org.fasttrackit.budget.budgetapp.controller.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice

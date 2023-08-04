@@ -23,6 +23,9 @@ public class Bill {
 
     @Column(name = "bill_month")
     private String month;
+
+    @Column(name = "bill_year")
+    private int year;
     @Column (name = "bill_name")
     private String name;
     @Column (name = "bill_amount")

@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.fasttrackit.budget.budgetapp.model.Bill;
 import org.fasttrackit.budget.budgetapp.model.Expense;
-import org.fasttrackit.budget.budgetapp.repository.ExpenseRepository;
+import org.fasttrackit.budget.budgetapp.service.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +52,31 @@ public class ExpenseService {
     public List<Expense> getAllExpensesFilterable(String name, String Category, double minAmount, double maxAmount, String dueDate) {
         return null;
     }
+
+    public List<Expense> getExpensesByMonthAndCategory(String month, String category) {
+        if (month != null && category != null) {
+            return expenseRepository.findByMonthContainingIgnoreCaseAndCategoryContainingIgnoreCase(month, category);
+        } else if (month != null) {
+            return expenseRepository.findAll().stream()
+                    .filter(expense -> expense.getMonth().equalsIgnoreCase(month))
+                    .collect(Collectors.toList());
+        } else if (category != null) {
+            return expenseRepository.findByCategoryContainingIgnoreCase(category);
+        } else {
+            return expenseRepository.findAll();
+        }
+    }
+
+    public double getSumOfExpensesForYear(int year) {
+        List<Expense> allExpensesForYear = expenseRepository.findByYear(year);
+
+        double sum = allExpensesForYear.stream()
+                .mapToDouble(Expense::getAmount)
+                .sum();
+
+        return sum;
+    }
+
+
 }
 

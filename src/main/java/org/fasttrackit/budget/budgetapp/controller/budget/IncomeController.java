@@ -2,7 +2,6 @@ package org.fasttrackit.budget.budgetapp.controller.budget;
 
 import lombok.RequiredArgsConstructor;
 import org.fasttrackit.budget.budgetapp.model.Income;
-import org.fasttrackit.budget.budgetapp.repository.IncomeRepository;
 import org.fasttrackit.budget.budgetapp.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

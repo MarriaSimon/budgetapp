@@ -2,15 +2,15 @@ package org.fasttrackit.budget.budgetapp.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.fasttrackit.budget.budgetapp.exception.ResourceNotFoundException;
+import org.fasttrackit.budget.budgetapp.controller.exception.ResourceNotFoundException;
 import org.fasttrackit.budget.budgetapp.model.Bill;
-import org.fasttrackit.budget.budgetapp.repository.BillRepository;
+import org.fasttrackit.budget.budgetapp.model.Expense;
+import org.fasttrackit.budget.budgetapp.service.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -56,34 +56,32 @@ public class BillService {
         return null;
     }
 
-        //filter the bills by month or by category
-        public List<Bill> getBillsByMonthAndCategory(String month, String category) {
-            if (month != null && category != null) {
-                return billRepository.findByMonthContainingIgnoreCaseAndCategoryContainingIgnoreCase(month, category);
-            } else if (month != null) {
-                return billRepository.findAll().stream()
-                        .filter(bill -> bill.getMonth().equalsIgnoreCase(month))
-                        .collect(Collectors.toList());
-            } else if (category != null) {
-                return billRepository.findByCategoryContainingIgnoreCase(category);
-            } else {
-                return billRepository.findAll();
-            }
+    //filter the bills by month or by category
+    public List<Bill> getBillsByMonthAndCategory(String month, String category) {
+        if (month != null && category != null) {
+            return billRepository.findByMonthContainingIgnoreCaseAndCategoryContainingIgnoreCase(month, category);
+        } else if (month != null) {
+            return billRepository.findAll().stream().filter(bill -> bill.getMonth().equalsIgnoreCase(month)).collect(Collectors.toList());
+        } else if (category != null) {
+            return billRepository.findByCategoryContainingIgnoreCase(category);
+        } else {
+            return billRepository.findAll();
         }
+    }
 
-//    private String extractMonthFromDueDate(String dueDate) {
-//
-//        String[] dateParts = dueDate.split("-");
-//        if (dateParts.length >= 2) {
-//            return dateParts[1];
-//        }
-//        return "";
-//    }
 
     public double getSumOfBillsForMonth(String month) {
         List<Bill> allBills = billRepository.findByMonth(month);
 
-        double sum = allBills.stream()
+        double sum = allBills.stream().mapToDouble(Bill::getAmount).sum();
+
+        return sum;
+    }
+
+    public double getSumOfBillsForYear(int year) {
+        List<Bill> allBillsForYear = billRepository.findByYear(year);
+
+        double sum = allBillsForYear.stream()
                 .mapToDouble(Bill::getAmount)
                 .sum();
 

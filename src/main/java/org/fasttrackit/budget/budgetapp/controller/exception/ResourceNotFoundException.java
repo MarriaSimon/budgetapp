@@ -1,4 +1,4 @@
-package org.fasttrackit.budget.budgetapp.exception;
+package org.fasttrackit.budget.budgetapp.controller.exception;
 
 import lombok.Getter;
 
