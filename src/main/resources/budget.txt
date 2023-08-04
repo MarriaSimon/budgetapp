@@ -1,0 +1,40 @@
+Income,Salary,9870,2023-07-10,Monthly
+Income,Freelance,550,2023-07-10,Monthly
+Income,Rent,2200,2023-07-10,Monthly
+Income,Rent Deposit,2500,2023-07-10,Annual
+Bill,Mortgage,1930,2023-07-15,Loan Reimbursement
+Bill,Electrica,98,2023-07-10,Utilities
+Bill,E-On,76,2023-07-20,Utilities
+Bill,Orange,365,2023-07-10,Utilities
+Bill,Orange Internet & TV,115,2023-07-13,Utilities
+Expense,Lidl Groceries,450,2023-07-02,Groceries
+Expense,Gas,450,2023-07-25,Transportation
+Expense,City Break,2400,2023-07-29,Entertainment
+Expense,Shopping,600,2023-07-27,Shopping
+Expense,Kaufland Groceries,570,2023-07-10,Groceries
+Income,Salary,9870,2023-06-10,Monthly
+Income,Freelance,2500,2023-06-10,Monthly
+Income,Rent,2200,2023-06-10,Monthly
+Bill,Mortgage,1930,2023-06-15,Loan Reimbursement
+Bill,Electrica,87,2023-06-10,Utilities
+Bill,E-On,76,2023-06-10,Utilities
+Bill,Orange,365,2023-06-10,Utilities
+Bill,Orange Internet & TV,115,2023-06-13,Utilities
+Expense,Lidl Groceries,450,2023-06-02,Groceries
+Expense,Gas,450,2023-06-25,Transportation
+Expense,Dinning Out,670,2023-06-29,Entertainment
+Expense,Shopping,600,2023-06-27,Shopping
+Expense,Kaufland Groceries,570,2023-06-10,Groceries
+Income,Salary,9870,2023-05-10,Monthly
+Income,Freelance,2500,2023-05-10,Monthly
+Income,Rent,2200,2023-05-10,Monthly
+Bill,Mortgage,1930,2023-05-15,Loan Reimbursement
+Bill,Electrica,87,2023-05-10,Utilities
+Bill,E-On,76,2023-05-10,Utilities
+Bill,Orange,365,2023-05-10,Utilities
+Bill,Orange Internet & TV,115,2023-05-13,Utilities
+Expense,Lidl Groceries,450,2023-05-02,Groceries
+Expense,Gas,450,2023-05-25,Transportation
+Expense,Girls Night Out,450,2023-05-29,Entertainment
+Expense,Shopping,600,2023-05-27,Shopping
+Expense,Kaufland Groceries,570,2023-05-10,Groceries

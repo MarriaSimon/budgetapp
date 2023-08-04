@@ -1,42 +1,46 @@
 package org.fasttrackit.budget.budgetapp.controller.budget;
 
+import lombok.RequiredArgsConstructor;
 import org.fasttrackit.budget.budgetapp.model.Expense;
 import org.fasttrackit.budget.budgetapp.repository.ExpenseRepository;
+import org.fasttrackit.budget.budgetapp.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/expenses")
+@RequiredArgsConstructor
+@RequestMapping("expenses") //http://post:port/expenses
+
 public class ExpenseController {
 
     @Autowired
-    private ExpenseRepository expenseRepository;
+    private ExpenseService expenseService;
 
     @PostMapping
     public Expense addExpense(@RequestBody Expense expense) {
-        return expenseRepository.save(expense);
+        return expenseService.addExpense(expense);
     }
 
     @GetMapping("/{id}")
     public Expense getExpenseById(@PathVariable Long id) {
-        return expenseRepository.findById(id).orElse(null);
+        return expenseService.getExpenseById(id);
     }
 
     @GetMapping
     public List<Expense> getAllExpenses() {
-        return expenseRepository.findAll();
+        return expenseService.getAllExpenses();
     }
 
     @PutMapping("/{id}")
     public Expense updateExpense(@PathVariable Long id, @RequestBody Expense updatedExpense) {
         updatedExpense.setId(id);
-        return expenseRepository.save(updatedExpense);
+        return expenseService.updateExpense(id,updatedExpense);
     }
 
     @DeleteMapping("/{id}")
     public void deleteExpense(@PathVariable Long id) {
-        expenseRepository.deleteById(id);
+        expenseService.deleteExpense(id);
     }
 }

@@ -1,18 +1,25 @@
 package org.fasttrackit.budget.budgetapp.service;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.fasttrackit.budget.budgetapp.exception.ResourceNotFoundException;
+import org.fasttrackit.budget.budgetapp.model.Expense;
 import org.fasttrackit.budget.budgetapp.model.Income;
 import org.fasttrackit.budget.budgetapp.repository.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Getter
 public class IncomeService {
 
     @Autowired
     private IncomeRepository incomeRepository;
+    private List<Income> incomeList = new ArrayList<>();
 
     public Income addIncome(Income income) {
         return incomeRepository.save(income);
@@ -42,5 +49,9 @@ public class IncomeService {
 
     public void deleteIncome(Long id) {
         incomeRepository.deleteById(id);
+    }
+
+    public List<Income> getAllIncomesFilterable(String name, String Category, double minAmount, double maxAmount, String dueDate) {
+        return null;
     }
 }

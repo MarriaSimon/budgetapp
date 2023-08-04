@@ -1,17 +1,24 @@
 package org.fasttrackit.budget.budgetapp.service;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.fasttrackit.budget.budgetapp.model.Bill;
 import org.fasttrackit.budget.budgetapp.model.Expense;
 import org.fasttrackit.budget.budgetapp.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Getter
 public class ExpenseService {
 
     @Autowired
     private ExpenseRepository expenseRepository;
+    private List<Expense> expenseList = new ArrayList<>();
 
     public Expense addExpense(Expense expense) {
         return expenseRepository.save(expense);
@@ -39,6 +46,10 @@ public class ExpenseService {
 
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
+    }
+
+    public List<Expense> getAllExpensesFilterable(String name, String Category, double minAmount, double maxAmount, String dueDate) {
+        return null;
     }
 }
 
